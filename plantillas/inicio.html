@@ -1,0 +1,38 @@
+{{ define "inicio" }}
+{{ template "cabecera"}}
+
+        <div class="container">
+            <a class="btn btn-primary btn-lg btn-block mb-4" href="/crear" role="button">Agregar Medicamento</a>
+            <table class="table table-hover table-striped table-bordered bg-light">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Principio Activo</th>
+                        <th>Presentación</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .}}
+                    <tr>
+                        <td>{{.Id}}</td>
+                        <td>{{.Nombre}}</td>
+                        <td>{{.Principio_activo}}</td>
+                        <td>{{.Presentacion}}</td>
+                        <td>${{.Precio}}</td>
+                        <td>
+                            <a class="btn btn-warning btn-sm" href="/editar?id={{.Id}}" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="/borrar?id={{.Id}}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+
+    
+
+{{template "pie"}}
+{{end}}
